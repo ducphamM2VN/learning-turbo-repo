@@ -1,0 +1,37 @@
+{
+  "name": "Employee Management Monorepo",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": "false",
+      "installOhMyZsh": "false",
+      "configureSshAgent": "true"
+    }
+  },
+  
+  "forwardPorts": [3000, 8080, 5050],
+  
+  "postCreateCommand": "pnpm install",
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "Vue.volar",
+        "ms-vscode.vscode-typescript-next",
+        "firsttris.vscode-jest-runner"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "turbo.useLocalTurbo": false,
+        "turbo.path": "/usr/local/bin/turbo"
+      }
+    }
+  },
+  
+  "remoteUser": "node"
+}

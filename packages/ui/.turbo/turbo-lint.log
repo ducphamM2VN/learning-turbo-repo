@@ -1,0 +1,4 @@
+
+> @repo/ui@0.0.0 lint /Users/phamminhduc/Documents/MD7/mono-repo/employee-management/packages/ui
+> eslint . --max-warnings 0
+

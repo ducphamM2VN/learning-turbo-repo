@@ -1,92 +1,205 @@
-# Employee Management App
+# Learning Turbo Repo 🚀
 
-A full-stack employee management application built within a pnpm monorepo, powered by Turborepo. The environment is fully containerized using Docker and VS Code Dev Containers for a seamless "one-click" setup.
+A modern monorepo learning project built with Turborepo, featuring a Vue.js frontend, NestJS backend, and shared packages. This project demonstrates best practices for managing multiple applications and packages in a single repository with efficient build caching and task orchestration.
 
 ## ✨ Features
 
-- **Monorepo:** `pnpm` workspaces and `Turborepo` for efficient build caching and task orchestration.
-- **Frontend:** A modern UI built with `Vue.js`.
-- **Backend:** A robust API powered by `NestJS`.
-- **Containerized Dev Environment:** Pre-configured with `Docker` and `VS Code Dev Containers` for a consistent and isolated development experience.
-- **Code Quality:** `ESLint` and `Prettier` are set up for consistent code style and quality.
+- **Monorepo Architecture:** Powered by `Turborepo` with `pnpm` workspaces for efficient dependency management
+- **Frontend Application:** Modern Vue.js 3 application with Vue CLI
+- **Backend API:** Robust NestJS TypeScript API with built-in testing
+- **Database Integration:** MikroORM with PostgreSQL for type-safe database operations
+- **Shared Packages:** Reusable UI components, ESLint configurations, and TypeScript configs
+- **Build Optimization:** Turborepo caching for fast builds and task execution
+- **Code Quality:** Comprehensive linting and formatting with ESLint and Prettier
+- **Type Safety:** Full TypeScript support across all packages
 
 ## 🛠️ Tech Stack
 
-- **Monorepo:** [pnpm](https://pnpm.io/), [Turborepo](https://turbo.build/repo)
-- **Backend:** [NestJS](https://nestjs.com/), [TypeScript](https://www.typescriptlang.org/)
-- **Frontend:** [Vue.js](https://vuejs.org/)
-- **Containerization:** [Docker](https://www.docker.com/)
-- **Development:** [VS Code Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers)
+### Core Technologies
+- **Monorepo:** [Turborepo](https://turbo.build/repo) + [pnpm](https://pnpm.io/)
+- **Backend:** [NestJS](https://nestjs.com/) + [TypeScript](https://www.typescriptlang.org/)
+- **Database:** [MikroORM](https://mikro-orm.io/) + [PostgreSQL](https://www.postgresql.org/)
+- **Frontend:** [Vue.js 3](https://vuejs.org/) + [Vue CLI](https://cli.vuejs.org/)
+- **UI Components:** [React](https://reactjs.org/) + [TypeScript](https://www.typescriptlang.org/)
+
+### Development Tools
+- **Package Manager:** pnpm 9.0.0
+- **Build System:** Turborepo
+- **Code Quality:** ESLint + Prettier
+- **Testing:** Jest (NestJS)
+- **Type Checking:** TypeScript 5.9.2
 
 ## 📂 Project Structure
 
 ```
-.
-├── apps
-│   ├── api/      # NestJS backend application
-│   └── web/      # Vue.js frontend application
-├── packages
-│   ├── eslint-config/
-│   ├── typescript-config/
-│   └── ui/       # Shared UI components (React-based in starter)
-└── docker-compose.yml
+learning-turbo-repo/
+├── apps/
+│   ├── api/                    # NestJS backend application
+│   │   ├── src/
+│   │   │   ├── app.controller.ts
+│   │   │   ├── app.service.ts
+│   │   │   ├── app.module.ts
+│   │   │   └── main.ts
+│   │   ├── test/               # E2E tests
+│   │   └── package.json
+│   │
+│   └── web/                    # Vue.js frontend application
+│       ├── src/
+│       │   ├── components/
+│       │   ├── App.vue
+│       │   └── main.js
+│       ├── public/
+│       └── package.json
+│
+├── packages/
+│   ├── ui/                     # Shared React UI components
+│   │   └── src/
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       └── code.tsx
+│   │
+│   ├── db/                     # Database entities and configurations
+│   │   └── src/
+│   │       ├── index.ts
+│   │       └── entities/
+│   │           └── user.entity.ts    # MikroORM entities
+│   │
+│   ├── eslint-config/          # Shared ESLint configurations
+│   │   ├── base.js
+│   │   ├── next.js
+│   │   └── react-internal.js
+│   │
+│   └── typescript-config/      # Shared TypeScript configurations
+│       ├── base.json
+│       ├── nextjs.json
+│       └── react-library.json
+│
+├── turbo.json                  # Turborepo configuration
+├── pnpm-workspace.yaml         # pnpm workspace configuration
+└── package.json                # Root package.json
 ```
 
 ## 🚀 Getting Started
 
-This project is configured to run in a development container. This is the recommended way to work on it, as it ensures all dependencies and services are set up correctly.
-
 ### Prerequisites
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [VS Code Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+- **Node.js:** >=18.0.0
+- **pnpm:** 9.0.0 (recommended package manager)
 
-### Setup
+### Installation
 
-1.  **Clone the repository:**
-    ```sh
-    git clone <your-repository-url>
-    cd employee-management
-    ```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ducphamM2VN/learning-turbo-repo.git
+   cd learning-turbo-repo
+   ```
 
-2.  **Open in VS Code:**
-    ```sh
-    code .
-    ```
+2. **Install dependencies:**
+   ```bash
+   pnpm install
+   ```
 
-3.  **Reopen in Container:**
-    - After opening the project, VS Code will detect the `.devcontainer` configuration and show a notification in the bottom-right corner.
-    - Click **"Reopen in Container"**.
-    - VS Code will build the Docker images and set up the development environment. This may take a few minutes on the first run as it downloads dependencies and builds the containers.
+## 🏃‍♂️ Development
 
-That's it! The `postCreateCommand` in the dev container will automatically run `pnpm install` to install all dependencies.
+### Run All Applications
 
-## 🏃 Running the Application
+```bash
+# Start all applications in development mode
+pnpm dev
 
-You can run these commands from the terminal inside the VS Code dev container.
+# Build all applications
+pnpm build
 
-- **Run all apps in development mode:**
-  ```sh
-  turbo run dev
-  ```
+# Run linting across all packages
+pnpm lint
 
-- **Build all apps for production:**
-  ```sh
-  turbo run build
-  ```
+# Format code across all packages
+pnpm format
 
-- **Run linting across the monorepo:**
-  ```sh
-  turbo run lint
-  ```
+# Type checking across all packages
+pnpm check-types
+```
 
-- **Run commands for a specific app:**
-  Use the `--filter` flag to target a single application.
-  ```sh
-  # Run the dev server for the web app only
-  pnpm --filter web run serve
+### Run Specific Applications
 
-  # Build the api app only
-  pnpm --filter api run build
-  ```
+```bash
+# Run only the Vue.js frontend
+pnpm --filter web dev
+
+# Run only the NestJS backend
+pnpm --filter api start:dev
+
+# Build only the API
+pnpm --filter api build
+
+# Lint only the UI package
+pnpm --filter @repo/ui lint
+```
+
+### Available Scripts
+
+| Script | Description |
+|--------|-------------|
+| `pnpm dev` | Start all apps in development mode |
+| `pnpm build` | Build all apps for production |
+| `pnpm lint` | Run ESLint across all packages |
+| `pnpm format` | Format code with Prettier |
+| `pnpm check-types` | Run TypeScript type checking |
+
+## 📦 Packages
+
+### Applications (`apps/`)
+- **`api`** - NestJS backend API with TypeScript
+- **`web`** - Vue.js 3 frontend application
+
+### Shared Packages (`packages/`)
+- **`@repo/ui`** - Shared React UI components
+- **`@repo/db`** - Database entities and utilities with MikroORM integration
+- **`@repo/eslint-config`** - ESLint configurations for different project types
+- **`@repo/typescript-config`** - TypeScript configurations
+
+## 🗄️ Database Integration
+
+This project uses [MikroORM](https://mikro-orm.io/) as the TypeScript ORM for database operations with PostgreSQL:
+
+### Features
+- **Type-safe Database Operations:** Full TypeScript support with compile-time type checking
+- **Entity Management:** Decorators-based entity definitions
+- **Auto Schema Sync:** Automatic database schema synchronization (development only)
+- **Migration Support:** Built-in migration system for production deployments
+- **Query Builder:** Powerful and intuitive query builder with type safety
+
+### Configuration
+The database configuration is centralized in the `@repo/db` package:
+- **Entities:** Located in `packages/db/src/entities/`
+- **Integration:** NestJS integration via `@mikro-orm/nestjs`
+- **Database:** PostgreSQL with connection configuration via environment variables
+
+### Environment Variables
+```bash
+DB_NAME=your_database_name
+DB_USER=your_username
+DB_HOST=localhost
+DB_PORT=5432
+```
+
+## 🔧 Turborepo Configuration
+
+The project uses Turborepo for:
+- **Task Caching:** Intelligent caching of build outputs and task results
+- **Task Orchestration:** Parallel execution of tasks across packages
+- **Dependency Management:** Automatic task dependency resolution
+
+Key tasks defined in `turbo.json`:
+- `build` - Build all applications with dependency awareness
+- `lint` - Run linting across all packages
+- `dev` - Start development servers
+
+## 🏗️ Architecture Decisions
+
+1. **Monorepo Structure:** Enables code sharing and consistent tooling across applications
+2. **Package Separation:** Clean separation of concerns with dedicated packages for configs and utilities
+3. **Build Optimization:** Turborepo caching reduces build times significantly
+4. **Type Safety:** Full TypeScript coverage ensures robust development experience
+
+**Happy Learning! 🎉**
